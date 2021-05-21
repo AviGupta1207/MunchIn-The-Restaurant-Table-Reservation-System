@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+
+<!-- Loading Static files into templates-->
+{% load static %}   <!-- ME ........................... -->
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Project-Title -->
+    <title>Munch-In|The Restaurant Table Reservation</title>
+
+    <!-- Linking CSS With HTML -->
+    <!-- <link rel="stylesheet" href="/css/style.css"> -->
+
+    <!-- CSS BY ME............................... -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+    <!-- Referencing CSS to the html file in templates -->
+
+
+</head>
+
+
+<!-- BODY SECTION STARTS -->
+
+<body>
+    {% if messages %}
+    {%for message in messages %}
+        <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+    <!-- HEADER STARTS -->
+
+    <header class="header">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <div class="logo">
+                    <a href="#"><img src="{% static 'img/logo3.png' %} " alt="logo"></a>
+                    <p class="para-header">Munch-In</p>
+                </div>
+                <div>
+
+                </div>
+                <button class="nav-toggler" type="button"> 
+                    <span></span>
+                </button>
+                <nav class="nav">
+                    <ul>
+                        <li class="nav-item"><a href="{% url 'profile'%}">Profile</a></li>
+                        <li class="nav-item"><a href="{% url 'index'%}">Home</a></li>
+                        <li class="nav-item"><a href="{% url 'book'%}">Book-Table</a></li>
+                        <li class="nav-item"><a href="{% url 'signup' %}">Signup/Login</a></li>
+                        <li class="nav-item"><a href="{% url 'logout' %}">Logout</a></li>
+
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HEADER ENDS -->
+
+
+    <!-- Home Section STARTS -->
+
+    <section class="home-section" id="home">
+        <div class="home-bg "></div>
+        <div class="container">
+            <div class="row min-vh-100 align-items-center">
+                <div class="home-text">
+                    <h1>Munch-In</h1>
+                    <h1>The Restaurant Table Reservation</h1>
+                    <p class="para-home">
+                    Welcome in Munch-In Happy Dinning.Hungry?!
+                    Good, we are here to serve you.
+                    Munch-In provides you spicy,delicious,stimulating,fresh and reviving food.
+                    Meet,eat and enjoy the true test.</p>
+                    <a href="{% url 'signup'%}" class="btn btn-default">Signup/Login</a>
+                    <a href="{% url 'book'%}" class="btn btn-default">Book A Table</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Home Section ENDS -->
+
+
+    <!-- ABOUT SECTION STARTS -->
+
+
+    <section class="about-section sec-padding" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="section-title">
+                    <h2 data-title="Our Story">About Us</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="about-text">
+                    <h3 style="color:cyan">Welcome To Munch-In</h3>
+                    <p style="color:white">We believe "Nothing brings people together like good food" that's why
+we have been providing spicy and delicious food.
+At Munch-In we are accepting reservations of dine-in online for good services and  better customer food experience
+So, the customer can get the food to be served be ready and hot.
+Our menu is meant to be feast that everyone at the table joins.
+</p>
+
+                    <p style="color:white">As, Din-In process provides good quality of service to the customers  as well as in accordance with city guildelines as we are in the phase of covid.
+we will seating at the limited capacity with social distancing in mind.Takeout will still be available via Talk.</p>
+                    <a href="" class="btn btn-default">Check Our Menu</a>
+                </div>
+                <div class="about-img">
+                    <div class="img-box">
+                        <!-- <h3>20+ Years Experience </h3> -->
+                        <h3>Laughter Is Brightest Where Food Is Greatest. </h3>
+                        <img src="{% static 'img/About-BG.jpg' %}" alt="about img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION ENDS -->
+
+
+
+    <!-- MENU SECTION STARTS   -->
+
+<form action="/" method="post">
+{% csrf_token %}
+    <section class="menu-section sec-padding" id="our-menu">
+        <div class="container">
+            <div class="row">
+                <div class="section-title">
+                    <h2 data-title="Order Now">Our Menu</h2>
+                </div>
+            </div>
+            <div class="row">
+                <div class="menu-tabs">
+                    <button type="button" class="menu-tab-item active" data-target="#all">Delicious Meals</button>
+                </div>
+            </div>
+
+            <div class="row menu-tab-content" id="all">
+
+                <!-- MENU ITEM-1 -->
+                
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Palak-Paneer.jpg' %}" alt="menu item thumbnail">
+                        <h3>Palak - Paneer<p>A great combination of cottage cheese with curry made of Spinach Leaves</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 120</div>
+                </div>
+               
+                <!-- MENU ITEM-2 -->
+                <div class="menu-item vertical">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Shahi-Paneer.jpeg' %}" alt="menu item thumbnail">
+                        <h3>Shahi - Paneer<p>cottage cheese panner cooked in creamy onions and thick orange gravy. Tastes
+                                slightly sweet as an indori.</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 110</div>
+                </div>
+
+                <!-- MENU ITEM-3 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Paneer-Butter Masala.jpeg' %}" alt="menu item thumbnail">
+                        <h3>Paneer - Butter Masala <p>one of our restaurant's best served dish. for the ones who looks for
+                                spicy and thick gravy.</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 120</div>
+                </div>
+
+                <!-- MENU ITEM-4 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Paneer-Tikka.jpg' %}" alt="menu item thumbnail">
+                        <h3>Paneer - Tikka <p>cootage cheese well sizzled along with onion and Capsicum.</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 140</div>
+                </div>
+
+                <!-- MENU ITEM-5 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Dal-Makhni.jpg' %}" alt="menu item thumbnail">
+                        <h3>Dal - Fry<p>cooked toor daal with light tadka of spices, for medium spicy lovers.</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 100</div>
+                </div>
+
+                <!-- MENU ITEM-6 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Dal-Tadka.jpeg' %}" alt="menu item thumbnail">
+                        <h3>Dal - Tadka <p>cooked toor dal with spices. Further, spicy flavors are added to increase desi
+                                tadka.</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 110</div>
+                </div>
+
+
+                <!-- MENU ITEM-7 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Jeera-Rice.jpg' %}" alt="menu item thumbnail">
+                        <h3>Jeera - Rice <p> Long grain Basmati rice with Cumin seeds fried in hot oil. garnished with
+                                coriander leaves. </p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 80</div>
+                </div>
+
+                <!-- MENU ITEM-8 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Veg-Biryani.jpg' %}" alt="menu item thumbnail">
+                        <h3>Veg - Biryani <p>Long grain Basmati rice fried with vegetables and kept to get steamed to get
+                                additional flavours.</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 120</div>
+                </div>
+
+
+                <!-- MENU ITEM-9 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Aloo-Do-Pyaza.jpeg' %}" alt="menu item thumbnail">
+                        <h3>Aloo - Do - Pyaza <p>Fried Cooked Potato with 2 onions as name suggests and spices</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 80</div>
+                </div>
+
+                <!-- MENU ITEM-10 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Bhindi-Masala.jpeg' %}" alt="menu item thumbnail">
+                        <h3>Bhindi - Masala <p>crispy and fried ladyfinger with some spicy salty and sour flavors.</p>
+                        </h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 80</div>
+                </div>
+
+                <!-- MENU ITEM-11 -->
+                 <div class="menu-item">
+                        <div class="menu-item-title">
+                            <img src="{% static 'img/menu/Aloo-Paratha.jpeg' %}" alt="menu item thumbnail">
+                            <h3>Aloo - Paratha<p>paratha stuffed with boiled fried potatoes served with chutney or ketchup</p></h3>
+                        </div>
+                            <div class="menu-item-price">Rs. 50</div>
+                    </div>
+
+                <!-- MENU ITEM-12 -->
+                <div class="menu-item">
+                    <div class="menu-item-title">
+                        <img src="{% static 'img/menu/Mix-Beans.jpeg' %}" alt="menu item thumbnail">
+                        <h3>Dal - Makhni <p>A punjabi mixed curry which is a blend of many grains with lots of butter and cream.</p></h3>
+                    </div>
+                    <div class="menu-item-price">Rs. 120</div>
+                </div>
+           
+                <!-- MENU ITEM-11 -->
+                <!-- <div class="menu-item">
+                <div class="menu-item-title">
+                    <img src="img/menu/Paneer.jpg" alt="menu item thumbnail">
+                    <h3>Shahi-Panner <p>A great cobination of paneer with curry of Spinach Leaves</p></h3>
+                </div>
+                <div class="menu-item-price">Rs. 120<button class="btn-add">ADD+</button></div>
+            </div> -->
+
+                <!-- MENU ITEM-12 -->
+                <!-- <div class="menu-item">
+                <div class="menu-item-title">
+                    <img src="img/menu/Paneer.jpg" alt="menu item thumbnail">
+                    <h3>Shahi-Panner <p>A great cobination of paneer with curry of Spinach Leaves</p></h3>
+                </div>
+                <div class="menu-item-price">Rs. 120<button class="btn-add">ADD+</button></div>
+            </div> -->
+
+            </div>
+
+
+        </div>
+    </section>
+        </form>
+
+
+
+    <!-- MENU SECTION ENDS -->
+
+    <!-- CONTACT-US SECTION STARTS -->
+    <section class="about-section sec-padding" id="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="section-title">
+                    <h2 data-title="Munch-In">Contact Us</h2>
+                </div>
+            </div>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3680.9684876524916!2d75.86625051796376!3d22.692216981610976!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fce50167a359%3A0x6585928e0ae7d0b3!2sBhawarkuan%20Police%20Station!5e0!3m2!1sen!2sin!4v1618579775523!5m2!1sen!2sin"
+                style="border:0; width: 100%; height: 350px;" allowfullscreen></iframe>
+            <footer id="footer">
+                <div class="container">
+                    <p> <strong>OUR LOCATION : </strong><br>Indrapuri Main Road,<br>Bhawarkuan Sqaure, Indore<br><br>
+                        <strong>OPENING HOURS : </strong> <br> Monday - Sunday<strong> <br> 6:00 PM - 12:00 PM <br> <br>
+                            CALL : </strong> +91-97xxxxxxxx <br> <strong>E-MAIL : </strong> django12072@gmail.com</p>
+                    <div class="social-links">
+                        <a href="#"><img src="{% static 'img/Social Icons/Facebook.png' %}" alt="Facebook"></a>
+                        <a href="#"><img src="{% static 'img/Social Icons/Instagram.png' %}" alt="Instagram"></a>
+                        <a href="#"><img src="{% static 'img/Social Icons/Whatsapp.png' %}" alt="Whatsapp"></a>
+                    </div>
+                    <div class="copyright">
+                        &copy; Copyright <strong><span>Munch-In - 2022</span></strong>. All Rights Reserved
+                    </div>
+                </div>
+            </footer>
+
+    <!-- CONTACT-US SECTION ENDS -->
+
+        </div>
+
+    </section>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+
+</html>

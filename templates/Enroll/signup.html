@@ -1,0 +1,63 @@
+{%extends 'enroll/base.html'%}
+{% load static%}
+
+
+{% block section-title %} <h2 data-title="User Registration">SignUp-Form</h2>{% endblock section-title %}
+{% block content %}
+    {% if messages %}
+    {%for message in messages %}
+        <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+
+
+    {% if otp %}
+        <p>We have sent a verification mail to your email address</p>
+        <p>Kindly, Check your email and type OTP below</p>
+        <form action="" method="POST">
+            {% csrf_token %}
+
+            <input type="hidden" class="form-control" name="usr" value="{{usr.username}}">
+
+            <div class="form-group">
+                <label for="exampleInputEmail1">Verify OTP</label>
+                <input type="text" class="form-control form-control-sm" aria-label="OTP" aria-describedby="OTP" placeholder="Enter Your OTP" name="otp">
+                <br>
+                <button type="submit" class="btn btn-primary">Verfiy</button>
+
+            </div>
+        
+        
+        </form>
+    {%else%}
+        <h3>Signup Form</h3>
+
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+    {% for fsu in form1%}
+    <div class="form-group py-0 my-0">
+        {{fsu.label_tag}} {{fsu}} 
+        <small class="text-danger">{{fsu.errors|striptags}} </small>
+    </div>
+    {% endfor %}
+    <br>
+    <input type="submit" class="btn btn-success" value="Submit">
+
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+           <p class="alert alert-danger my-3">{{ error }} </p>
+        {% endfor %}
+    {% endif %}
+    <br><br>
+
+    <div style="overflow: hidden;">
+    <p style="float: left;">Already Had An Account !!</p>
+    <p style="float: left;"><a href="{% url 'login' %}">Login</a></p>
+</div>
+
+</form>
+{% endif %}
+
+     
+
+{% endblock content %}

@@ -1,0 +1,34 @@
+{%extends 'enroll/base.html'%}
+{% load static%}
+
+
+{% block section-title %} <h2 data-title="Change Your Password Here">Welcome User</h2>{% endblock section-title %}
+{% block content %}
+
+    <h3>Reset Password Form</h3>
+
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+    <div class="form-group my-0 py-0"> 
+    {% for fps in form%}
+        {{fps.label_tag}} 
+        {{fps}} 
+        <p class='text-danger'>{{fps.errors|striptags}}</p>
+    {% endfor %}
+    </div>
+
+    <input type="submit" value="Save" class="btn btn-success">
+
+    {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+           <p class="error"> {{ error }} </p>
+        {% endfor %}
+    {% endif %}
+    <br><br>
+
+    <a href="{% url 'profile'%}">Profile</a><br>
+    <a href="{% url 'logout'%}">Logout</a>
+    </form>
+    
+
+{% endblock content%}

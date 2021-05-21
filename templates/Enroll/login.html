@@ -1,0 +1,51 @@
+{%extends 'enroll/base.html'%}
+{% load static%}
+
+
+{% block section-title %} <h2 data-title="User Authentication">Login-Form</h2>{% endblock section-title %}
+{% block content %}
+
+     {% if messages %}
+    {%for message in messages %}
+        <p {% if message.tags%} class="alert alert-{{message.tags}} mb-3" {%endif%}>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+
+    <h3>Login Form</h3>
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+    {% for fl in form%}
+    <div class="form-group py-0 my-0">
+        {{ fl.label_tag }}  {{ fl }}
+        <small class="text-danger">{{fl.errors|striptags}} </small> <br>
+    </div>
+    {% endfor %}
+    <input type="submit"  class="btn btn-success" value="Login">
+
+    <!--{% if form.errors %}
+        {% for error in form.errors %}
+           <p class="alert alert-danger my-3">{{ error }} </p>
+        {% endfor %}
+    {% endif %} -->
+
+     {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+           <p class="alert alert-danger my-3">{{ error }} </p>
+        {% endfor %}
+    {% endif %}
+    <br>
+<br>
+<div style="overflow: hidden;">
+
+    <p style="float: left;">Forget Password?</p>
+    <p style="float: left;"><a href="{% url 'forgetpass' %}">Reset Password</a></p>
+
+</div>
+
+<div style="overflow: hidden;">
+    <p style="float: left;">Don't Have An Account Create One?</p>
+    <p style="float: left;"><a href="{% url 'signup' %}">SignUp</a></p>
+</div>
+
+
+{% endblock content%}

@@ -1,0 +1,38 @@
+{%extends 'enroll/base.html'%}
+{% load static%}
+
+
+{% block section-title %} <h2 data-title="Welcome {{name}}">Profile Page</h2>{% endblock section-title %}
+{% block content %}
+
+      {% if messages %}
+    {%for message in messages %}
+        <p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %}>{{message}}</p>
+    {% endfor %}
+    {% endif %}
+        <h3>User Profile</h3>
+    <form action="" method="post" novalidate>
+    {% csrf_token %}
+
+     {% for fuc in form%}
+    <div class="form-grid">
+        {{fuc.label_tag}} {{fuc}} <br><br> 
+    <small class="text-warning">{{fsu.errors|striptags}}</small> 
+    </div>
+    {% endfor %}
+    <input type="submit" value="Update-Profile" class="btn btn-success"> <br><br>
+
+
+       {% if form.non_field_errors %}
+        {% for error in form.non_field_errors %}
+           <p class="alert alert-danger my-3"> {{ error }} </p>
+        {% endfor %}
+    {% endif %}
+    
+    </form>
+    <br><br>
+    <a href="{% url 'logout' %}">Logout</a>
+    <br>
+    <a href="{% url 'changepass'%}">Change Password</a>
+
+{% endblock content%}

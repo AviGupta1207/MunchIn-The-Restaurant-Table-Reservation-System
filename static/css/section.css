@@ -1,0 +1,148 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+
+/* Variables */
+
+:root{
+    --main-color : #eaa023;
+    /* --dark : #0c1023; */
+    /* --dark : rgb(14, 95, 95); */
+    /* color: gold; */
+    /* --dark-light : #191f3a; */
+    /* --dark : rgb(37, 51, 51) ; */
+    --dark : rgb(2, 114, 114) ;
+    --dark-light : rgb(43, 42, 42);
+    --white : #ffffff;
+    --white-light : #c8c8c8;
+    --shadow : 0 0 15px rgba(0,0,0,0.25);
+    --cursive-font:'Dancing Script', cursive;
+    scroll-behavior: smooth;
+}
+
+
+
+/* Global settings */
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+::before
+
+::after{
+
+    box-sizing: border-box;
+}
+
+body{
+
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-tap-highlight-color: transparent;
+    font-family: 'Mukta', sans-serif;
+    font-weight: 300;
+    color: var(--white-light);
+    /* background-color: red; */
+}
+
+
+
+ul{
+    list-style: none;
+}
+
+h1{
+    font-weight: 700;
+    color: var(--white);
+}
+
+h2{
+    font-weight: 600;
+    color: var(--main-color);
+}
+
+
+
+h3,h4,h5,h6{
+    font-weight: 500;
+    color: var(--white);
+}
+
+h2{
+    font-size: 16px;
+}
+
+.container{
+
+    max-width: 1170px;
+    margin: auto;
+}
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.para-header{
+    zoom: 2;
+    color: var(--main-color);
+    font-weight:900;
+    padding: 2px;
+    margin: 2px;
+}
+
+.min-vh-100{
+    min-height: 100vh;
+}
+
+.sec-padding{
+    padding: 80px 0;
+}
+
+
+h2{
+    font-weight: 600;
+    color: var(--white);
+}
+
+.book-section{
+    background-color: var(--dark-light);
+    } 
+/* SECTION TITLE */
+
+.section-title{
+    width: 100%;
+    padding: 0 15px;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title h2{
+    font-size: 35px;
+    text-transform: capitalize;
+}
+
+.section-title h2::before{
+    content: attr(data-title);
+    display: block;
+    font-size: 40px;
+    margin: 4px;
+    color: var(--main-color);
+    font-family: var(--cursive-font);
+    font-weight: 400;
+    text-transform: capitalize;
+}
