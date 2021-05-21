@@ -26,10 +26,9 @@ print(TEMPLATES_DIR)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'd4b2s=$d)**f%b(kr_w84i!*)9m^10r2a3i7vvht=f+#0lbv6)'
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = False
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
